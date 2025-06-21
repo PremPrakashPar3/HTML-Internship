@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let count=1;
+        const sliders=()=>{
+            if(count==1){
+                img.src="Unknown.png";
+                count++;
+            }else if(count==2){
+                img.src="download.jpeg";
+                count++;}
+            else if(count==3){
+                img.src="favicon.jpeg";
+                count++;
+            }
+            else if(count==4){
+                img.src="mike.png";
+                count=1;
+            }
+            setTimeout("sliders()",1000);
+        }
+        </script>
+</head>
+<body onload="sliders()">
+    <img id="slider" src="Unknown.png" name="img"height="300px" width="500px"title="Images"/>
+    
+</body>
+</html>

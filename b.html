@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+    const getPrice=(x)=>{
+        let product_price=0;
+        if(x=="Orio"){
+            product_price=10;
+        }else if(x=="ParleG"){
+            product_price=20;
+        }else if(x=="Bretinea"){
+            product_price=30;
+        }
+        else if(x=="HappyHappy"){
+            product_price=40;
+        }
+        else{
+        ;
+        }
+        document.getElementById("pr").value=product_price;
+    }
+        const calc_amount=()=>{
+
+            let q=document.getElementById("qu").value;
+            let price=document.getElementById("pr").value;
+            let amount=q*price;
+            document.getElementById("am").value=amount;
+        }
+       const discount=()=>{
+        let a=document.getElementById("am").value;
+        let disc=(a*20)/100;
+        document.getElementById("dis").value=disc;
+       }
+       const amtaftdis=()=>{
+        let a=document.getElementById("am").value;
+        let disc=document.getElementById("dis").value;
+        let aad=a-disc;
+        document.getElementById("aad").value=aad;
+       }
+    </script>
+</head>
+<body>
+    <table border="1" align="center" cellspacing="0" cellpadding="10">
+        <tr>
+         <td>Product Name
+            <select id="pname" onchange="getPrice(this.value)">
+                <option value="">Select Product</option>
+                <option value="Orio">Orio</option>
+                <option value="ParleG">ParleG</option>
+                <option value="Bretinea">Bretinea</option>
+                <option value="HappyHappy">HappyHappy</option>
+            </select>
+         </td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td><input type="text"id="qu"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text"id="pr"></td>
+        </tr>
+           <tr>
+            <td>Amount</td>
+            <td><input type="text"id="am" onblur="calc_amount()"></td>
+           </tr>
+        <tr>
+            <td>Discount</td>
+            <td><input type="text"id="dis" onblur="discount()"></td>
+            <tr>
+                <td>Amount after Discount</td>
+                <td><input type="text"id="aad" onclick="amtaftdis()"></td>
+            </tr>
+        </tr>
+    </table>
+</body>
+</html>

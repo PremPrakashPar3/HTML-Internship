@@ -1,0 +1,13 @@
+.image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.box {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    background-color: lightgray;
+    position: relative;
+}
