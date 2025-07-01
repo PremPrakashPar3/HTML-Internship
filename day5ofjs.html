@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const vali=()=>{ 
+            let name = document.getElementById("nm").value;
+            let pwd = document.getElementById("pwd").value;
+            let cpwd = document.getElementById("cpwd").value;
+            if(name === "") {
+                alert("Please enter your name");
+            return false;
+            }
+            if(pwd === "") {
+                alert("Please enter your password");
+                return false;
+            }
+             if(pwd !== cpwd) {
+                alert("Password and Confirm Password do not match");
+                return false;
+            }
+            if(gender==="") {
+                alert("Please select gender");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form name="myforn" action="practice.html" onsubmit="return vali()">
+        <table border="1"align="center"cellspacing="0" cellpadding="10">
+            <tr>
+                <td>User Name</td>
+               <td> <input type="text" id="nm" value=""/></td>
+                </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="pwd" value=""/></td>
+                </tr>
+                <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" id="cpwd" value=""/></td>
+                </tr>
+                <tr><td>Select Gender</td>
+                <td><input type="radio" name="Male" value="Male">Male
+                <input type="radio" name="Female" value="Female">Female</td>
+                </tr>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+            
+
+        </table>
+    </form>
+</body>
+</html>

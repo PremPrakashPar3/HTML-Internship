@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dropdown Output Below</title>
+  <script>   
+    const showSemester = () => {
+      let course = document.getElementById("course").value;
+
+      if (course !== "") {
+        document.getElementById("semesterRow").style.display = "table-row";
+        document.getElementById("subjectRow").style.display = "none";
+        document.getElementById("submitRow").style.display = "none";
+        document.getElementById("result").innerHTML = "";
+      } else {
+        document.getElementById("semesterRow").style.display = "none";
+        document.getElementById("subjectRow").style.display = "none";
+        document.getElementById("submitRow").style.display = "none";
+        document.getElementById("result").innerHTML = "";
+      }
+    };
+
+    const showSubject = () => {
+      let semester = document.getElementById("semester").value;
+
+      if (semester !== "") {
+        document.getElementById("subjectRow").style.display = "table-row";
+        document.getElementById("submitRow").style.display = "table-row";
+        document.getElementById("result").innerHTML = "";
+      } else {
+        document.getElementById("subjectRow").style.display = "none";
+        document.getElementById("submitRow").style.display = "none";
+        document.getElementById("result").innerHTML = "";
+      }
+    };
+
+    const checkDropdowns = () => {
+      let course = document.getElementById("course").value;
+      let semester = document.getElementById("semester").value;
+      let subject = document.getElementById("subject").value;
+
+      if (course && semester && subject) {
+        // Show output below
+        document.getElementById("result").innerHTML =
+          "<h3> You Selected:</h3>" +
+          "<p><b>Course:</b> " + course + "</p>" +
+          "<p><b>Semester:</b> " + semester + "</p>" +
+          "<p><b>Subject:</b> " + subject + "</p>";
+      } else {
+        document.getElementById("result").innerHTML =
+          "<p style='color:red;'>Please select all fields!</p>";
+      }
+
+      return false; 
+    };
+  </script>
+</head>
+<body>
+
+  <h2 align="center">Step by Step Dropdown Form</h2>
+
+  <form onsubmit="return checkDropdowns()">
+    <table border="1" align="center" cellpadding="10">
+    <!-- Course -->
+      <tr>
+        <td>Course:</td>
+        <td>
+          <select id="course" onchange="showSemester()">
+            <option value="">-- Select Course --</option>
+            <option value="BCA">BCA</option>
+            <option value="BSc">BSc</option>
+          </select>
+        </td>
+      </tr>
+
+      <!-- Semester -->
+      <tr id="semesterRow" style="display:none;">
+        <td>Semester:</td>
+        <td>
+          <select id="semester" onchange="showSubject()">
+            <option value="">-- Select Semester --</option>
+            <option value="1st">1st Sem</option>
+            <option value="2nd">2nd Sem</option>
+            <option value="3rd">3rd Sem</option>
+          </select>
+        </td>
+      </tr>
+
+      <!-- Subject -->
+      <tr id="subjectRow" style="display:none;">
+        <td>Subject:</td>
+        <td>
+          <select id="subject">
+            <option value="">-- Select Subject --</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="Java">Java</option>
+          </select>
+        </td>
+      </tr>
+
+      <!-- Submit -->
+      <tr id="submitRow" style="display:none;">
+        <td colspan="2" align="center">
+          <input type="submit" value="Submit">
+        </td>
+      </tr>
+
+    </table>
+  </form>
+
+  <div id="result" style="text-align:center; margin-top:20px;"></div>
+
+</body>
+</html>

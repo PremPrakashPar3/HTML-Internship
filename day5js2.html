@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const val=() => {
+            let name = document.myForm.nm.value;
+            let password = document.myForm.pass.value;
+            let confirm_Password = document.myForm.cPass.value;
+            let gender = document.myForm.r1.value;
+            
+            if (name =="") {
+                // alert("enter user name");//
+                document.getElementById("error").innerHTML = "enter user name";
+                return false;
+            }
+            if (password == "") {
+                alert(" enter password");
+                return false;
+            }
+                if (password!=confirm_Password) {
+                    alert("password and confirm password not match");
+                    return false;          
+            
+            }
+            if (gender == "") {
+                alert("select  gender");
+                return false;
+            }
+    
+            return true;
+        }
+        const alphaCheck = (e) => {
+            let keyId=(window.event)? event.keyCode : e.which;
+            if((keyId >= 65 && keyId <= 90) || (keyId >= 97 && keyId <= 122))
+            return true;
+            else
+            return false;
+        }
+          </script>
+</head>
+<body>
+    <form name="myForm" action="register.html"onsubmit="return val()" >
+        <table border="1" align="center" cellspacing="0" cellpadding="10">
+            <tr>
+                <td>user name</td>
+                <td><input type="text" onkeypress="return alphaCheck(event)" name="nm" value="">
+                <span id="error" style="color: red; font-weight: bold;"></span></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td><input type="password" name="pass" value=""></td>
+                </tr>
+                <tr>
+                <td>confirm password</td>
+                <td><input type="password" name="cPass" value=""></td>
+                </tr>
+            <tr>
+                <td>gender</td>
+                <td>
+                    <input type="radio" name="r1" value="male">male
+                    <input type="radio" name="r1" value="female">female
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value="send"/>
+
+                </td>
+            </tr>
+            </table>
+                
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let attempts=0;
+        let maxAttempts=3;
+        let lockTime=30;
+        const vali = () => {
+            let name = document.getElementById("nm").value;
+            let pwd = document.getElementById("pwd").value;
+            let btn = document.querySelector("input[type='submit']");
+            //if(btn.disabled) {
+               // alert(`Too many attempts. Please try again after ${lockTime} seconds.`);
+               // return false;
+            
+            if(name==="Admin"&&pwd==="12345") {
+                alert("Login Successful");
+                attempts = 0; // Reset attempts on successful login
+                return true;
+            } else { attempts++;
+                alert("Invalid Username or Password");
+            if (attempts >= maxAttempts) {
+               disableLogin();
+            }
+            return false;
+        }
+    }
+     const disableLogin = () => {
+            let btn = document.querySelector("input[type='submit']");
+            btn.disabled = true;
+            let counter = lockTime;
+            let interval = setInterval(() => {
+                document.getElementById("status").innerHTML = `Please wait ${counter} seconds before trying again.`;
+                counter--;
+                if (counter < 0) {
+                    clearInterval(interval);
+                    btn.disabled = false;
+                    attempts = 0; // Reset attempts after lock time
+                    document.getElementById("status").innerHTML = "You can try logging in again now.";
+                }
+            }, 1000);
+        };
+       /* const disableLogin=()=>{
+            let btn=dpcument.querySelector("input[type='submit']");
+            btn.disabled=true;
+            let counter=lockTime;
+            let interval=setInterval(() => {
+                console.log(`Please wait ${counter} seconds before trying again.`);
+            }, 1000);
+            setTimeout(() => {
+                clearInterval(interval);
+                btn.disabled=false;
+                attempts=0; // Reset attempts after lock time
+                console.log("You can try logging in again now.");
+            }, lockTime * 1000);*/
+                
+        
+    </script>
+</head>
+<body>
+    <form return vali()">
+        <table border="1"align="center"cellspacing="0" cellpadding="10">
+            <tr>
+                <td colspan="2" align="center"><h2>Login Form</h2></td>
+            </tr>
+            <tr>
+                <td>User Name</td>
+               <td> <input type="text" id="nm" value=""/></td>
+                </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="pwd" value=""/></td>
+                </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Submit" ></td>
+            </tr>
+            
+
+        </table>
+       <p id="status"align="center" style="color: red;"</p>
+    </form>
+</body>
+</html>
